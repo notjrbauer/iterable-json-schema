@@ -1,0 +1,26 @@
+{
+  "name": "iterable-json-schema",
+  "main": "index.js",
+  "version": "0.0.0",
+  "description": "iterable api json schema",
+  "license": "MIT",
+  "repository": "notjrbauer/iterable-json-schema",
+  "author": {
+    "name": "notjrbauer",
+    "email": "notjrbauer@gmail.com",
+    "url": "notjrbauer.github.io"
+  },
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "keywords": [
+    "json schema"
+  ],
+  "devDependencies": {
+    "tape": "^4.0.0",
+    "standard": "^6.0.0"
+  },
+  "files": [
+    "index.js"
+  ]
+}

@@ -90,7 +90,9 @@ test('Api User', function (t) {
   t.test('is valid with maximum input amount', function (t) {
     var isValid = validate({
       email: 'test@test.com',
-      dataFields: { data: 'fields' },
+      dataFields: {
+        data: 'fields'
+      },
       userId: '12'
     })
     t.ok(isValid)
@@ -101,6 +103,75 @@ test('Api User', function (t) {
     var isValid = validate({
       email: 'test@test.com',
       apple: 'orange'
+    })
+    t.false(isValid)
+    t.end()
+  })
+})
+
+test('Subscribe Request', function (t) {
+  var subscribeReq = require('./subscribe-request')
+  var user = require('./api-user')
+  var validate = validator(subscribeReq, {
+    schemas: {
+      'api-user': user
+    }
+  })
+
+  t.test('is valid with minimum inputs', function (t) {
+    var isValid = validate({
+      listId: 1,
+      subscribers: [{
+        email: 'test@test.com'
+      }]
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is valid with maximum optional inputs', function (t) {
+    var isValid = validate({
+      listId: 1,
+      subscribers: [{
+        email: 'test@test.com',
+        userId: '1',
+        dataFields: {
+          state: 'CA',
+          city: 'SF'
+        }
+      }]
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with missing inputs', function (t) {
+    var isValid = validate({
+      subscribers: [{
+        email: 'test@test.com',
+        userId: '1',
+        dataFields: {
+          state: 'CA',
+          city: 'SF'
+        }
+      }]
+    })
+    t.false(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with additional inputs', function (t) {
+    var isValid = validate({
+      listId: 1,
+      subscribers: [{
+        email: 'test@test.com',
+        userId: '1',
+        dataFields: {
+          state: 'CA',
+          city: 'SF'
+        },
+        additional: 'data'
+      }]
     })
     t.false(isValid)
     t.end()

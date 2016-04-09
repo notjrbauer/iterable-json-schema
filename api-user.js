@@ -16,5 +16,5 @@ module.exports = {
       required: false
     }
   },
-  additionalProperities: false
+  additionalProperties: false
 }

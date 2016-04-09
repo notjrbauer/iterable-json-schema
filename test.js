@@ -74,3 +74,35 @@ test('Commerce Item', function (t) {
     t.end()
   })
 })
+
+test('Api User', function (t) {
+  var user = require('./api-user')
+  var validate = validator(user)
+
+  t.test('is valid with minimum inputs', function (t) {
+    var isValid = validate({
+      email: 'test@test.com'
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is valid with maximum input amount', function (t) {
+    var isValid = validate({
+      email: 'test@test.com',
+      dataFields: { data: 'fields' },
+      userId: '12'
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with additional inputs', function (t) {
+    var isValid = validate({
+      email: 'test@test.com',
+      apple: 'orange'
+    })
+    t.false(isValid)
+    t.end()
+  })
+})

@@ -510,3 +510,35 @@ test('Track Request', function (t) {
     t.end()
   })
 })
+
+test('Update Email Request', function (t) {
+  var updateEmailReq = require('./update-email-request')
+  var validate = validator(updateEmailReq)
+
+  t.test('is valid with email input', function (t) {
+    var isValid = validate({
+      currentEmail: 'test@test.com',
+      newEmail: 'test1@test.com'
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with additional inputs', function (t) {
+    var isValid = validate({
+      currentEmail: 'test@test.com',
+      newEmail: 'test1@test.com',
+      dateFields: {}
+    })
+    t.false(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with missing inputs', function (t) {
+    var isValid = validate({
+      currentEmail: 'test@test.com'
+    })
+    t.false(isValid)
+    t.end()
+  })
+})

@@ -302,3 +302,61 @@ test('Workflow Request', function (t) {
     t.end()
   })
 })
+
+test('Track Conversion Request', function (t) {
+  var trackConvReq = require('./track-conversion-request')
+  var validate = validator(trackConvReq)
+
+  t.test('is valid with minimum inputs', function (t) {
+    var isValid = validate({
+      email: 'test@test.com',
+      campaignId: 1
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is valid with maximum optional inputs', function (t) {
+    var isValid = validate({
+      email: 'test@test.com',
+      campaignId: 1,
+      templateId: 1,
+      amount: 10,
+      createdAt: Date.parse(Date.now()),
+      dataFields: {
+        date: 'fields'
+      }
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with missing inputs', function (t) {
+    var isValid = validate({
+      templateId: 1,
+      amount: 10,
+      createdAt: Date.parse(Date.now()),
+      dataFields: {
+        date: 'fields'
+      }
+    })
+    t.false(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with additional inputs', function (t) {
+    var isValid = validate({
+      email: 'test@test.com',
+      campaignId: 1,
+      templateId: 1,
+      amount: 10,
+      createdAt: Date.parse(Date.now()),
+      dataFields: {
+        date: 'fields'
+      },
+      additional: 'input'
+    })
+    t.false(isValid)
+    t.end()
+  })
+})

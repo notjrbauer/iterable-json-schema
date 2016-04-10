@@ -601,3 +601,52 @@ test('Bulk Update Request', function (t) {
     t.end()
   })
 })
+
+test('Update Subscription Request', function (t) {
+  var updateSubReq = require('./update-subscription-request')
+  var validate = validator(updateSubReq)
+
+  t.test('is valid with minimum inputs', function (t) {
+    var isValid = validate({
+      email: 'test@test.com'
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is valid with maximum optional inputs', function (t) {
+    var isValid = validate({
+      email: 'test@test.com',
+      emailListIds: [1, 2, 3],
+      unsubscribedChannelIds: [1, 2, 3],
+      campaignId: 1,
+      templateId: 1
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with missing inputs', function (t) {
+    var isValid = validate({
+      emailListIds: [1, 2, 3],
+      unsubscribedChannelIds: [1, 2, 3],
+      campaignId: 1,
+      templateId: 1
+    })
+    t.false(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with additional inputs', function (t) {
+    var isValid = validate({
+      email: 'test@test.com',
+      emailListIds: [1, 2, 3],
+      unsubscribedChannelIds: [1, 2, 3],
+      campaignId: 1,
+      templateId: 1,
+      additional: 'inputs'
+    })
+    t.false(isValid)
+    t.end()
+  })
+})

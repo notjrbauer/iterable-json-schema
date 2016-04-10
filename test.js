@@ -796,8 +796,7 @@ test('Target Push Request', function (t) {
       dataFields: {
         date: 'fields'
       },
-      sendAt: new Date().toUTCString(),
-      additional: 'data'
+      sendAt: new Date().toUTCString()
     })
     t.false(isValid)
     t.end()
@@ -859,8 +858,7 @@ test('Target SMS Request', function (t) {
       dataFields: {
         date: 'fields'
       },
-      sendAt: new Date().toUTCString(),
-      additional: 'data'
+      sendAt: new Date().toUTCString()
     })
     t.false(isValid)
     t.end()

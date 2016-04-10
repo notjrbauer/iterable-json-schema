@@ -542,3 +542,62 @@ test('Update Email Request', function (t) {
     t.end()
   })
 })
+
+test('Bulk Update Request', function (t) {
+  var bulkUpdateReq = require('./bulk-update-user-request')
+  var user = require('./api-user')
+  var validate = validator(bulkUpdateReq, {
+    schemas: {
+      'api-user': user
+    }
+  })
+
+  t.test('is valid with minimum inputs', function (t) {
+    var isValid = validate({
+      users: [{
+        email: 'test@test.com'
+      }]
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is valid with maximum optional inputs', function (t) {
+    var isValid = validate({
+      users: [{
+        email: 'test@test.com',
+        userId: '1',
+        dataFields: {
+          state: 'CA',
+          city: 'SF'
+        }
+      }]
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with missing inputs', function (t) {
+    var isValid = validate({
+      users: []
+    })
+    t.false(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with additional inputs', function (t) {
+    var isValid = validate({
+      users: [{
+        email: 'test@test.com',
+        userId: '1',
+        dataFields: {
+          state: 'CA',
+          city: 'SF'
+        }
+      }],
+      additional: true
+    })
+    t.false(isValid)
+    t.end()
+  })
+})

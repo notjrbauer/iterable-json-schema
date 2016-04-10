@@ -708,3 +708,35 @@ test('Api Update User Request', function (t) {
     t.end()
   })
 })
+
+test('Disable Device Request', function (t) {
+  var disableDevReq = require('./disable-device-request')
+  var validate = validator(disableDevReq)
+
+  t.test('is valid with minimum inputs', function (t) {
+    var isValid = validate({
+      token: 'im a token'
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with additional inputs', function (t) {
+    var isValid = validate({
+      token: 'im a token',
+      email: 'test@test.com',
+      bad: 'bad'
+    })
+    t.false(isValid)
+    t.end()
+  })
+
+  t.test('is valid with maximum inputs', function (t) {
+    var isValid = validate({
+      token: 'im a token',
+      email: 'test@test.com'
+    })
+    t.ok(isValid)
+    t.end()
+  })
+})

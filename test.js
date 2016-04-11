@@ -965,3 +965,73 @@ test('Track Purchase Request', function (t) {
     t.end()
   })
 })
+
+test('Update Cart Request', function (t) {
+  var updateCartReq = require('./update-cart-request')
+  var user = require('./api-user-update-request')
+  var item = require('./commerce-item')
+  var validate = validator(updateCartReq, {
+    schemas: {
+      'api-user-update-request': user,
+      'commerce-item': item
+    }
+  })
+
+  t.test('is valid with minimum/maximum inputs', function (t) {
+    var isValid = validate({
+      user: {
+        email: 'test@test.com'
+      },
+      items: [{
+        id: '1',
+        name: 'item one',
+        price: 100,
+        quantity: 1
+      }]
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with missing required inputs', function (t) {
+    var isValid = validate({
+      items: [{
+        id: '1',
+        name: 'item one',
+        price: 100,
+        quantity: 1
+      }]
+    })
+    t.false(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with additional inputs', function (t) {
+    var isValid = validate({
+      user: {
+        email: 'test@test.com'
+      },
+      items: [{
+        id: '1',
+        name: 'item one',
+        price: 100,
+        quantity: 1
+      }],
+      additional: 'inputs'
+    })
+    t.false(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with 0 items', function (t) {
+    var isValid = validate({
+      user: {
+        email: 'test@test.com'
+      },
+      items: [],
+      additional: 'inputs'
+    })
+    t.false(isValid)
+    t.end()
+  })
+})

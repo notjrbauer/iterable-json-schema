@@ -149,3 +149,59 @@ test('Api User', function (t) {
   })
 })
 
+test('Api Update User Request', function (t) {
+  var validate = validator(common.updateUser)
+
+  t.test('is valid with email and minimum inputs', function (t) {
+    var isValid = validate({
+      email: 'test@test.com'
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is valid with userId and minimum inputs', function (t) {
+    var isValid = validate({
+      userId: '1'
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is invalid without email or userId', function (t) {
+    var isValid = validate({
+      dataFields: {}
+    })
+    t.false(isValid)
+    t.end()
+  })
+
+  t.test('is valid with maximum optional inputs', function (t) {
+    var isValid = validate({
+      email: 'test@test.com',
+      userId: '1',
+      dataFields: {
+        date: 'fields'
+      }
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with additional inputs', function (t) {
+    var isValid = validate({
+      email: 'test@test.com',
+      eventName: 'eventName',
+      userId: '1',
+      templateId: 1,
+      createdAt: Date.parse(Date.now()),
+      dataFields: {
+        date: 'fields'
+      },
+      additional: 'input'
+    })
+    t.false(isValid)
+    t.end()
+  })
+})
+

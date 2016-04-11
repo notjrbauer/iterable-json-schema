@@ -76,6 +76,44 @@ test('Commerce Item', function (t) {
   })
 })
 
+test('attachment-entry', function (t) {
+  var attachmentEntry = require('./attachment-entry')
+  var validate = validator(attachmentEntry)
+
+  t.test('is valid with required inputs', function (t) {
+    var isValid = validate({
+      mimeType: 'application/octet-stream',
+      name: 'john',
+      content: new Buffer('basesixtyfour').toString('base64')
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is valid with maximum amount of inputs', function (t) {
+    var isValid = validate({
+      valid: true,
+      mimeType: 'application/octet-stream',
+      name: 'john',
+      content: new Buffer('basesixtyfour').toString('base64')
+    })
+    t.ok(isValid)
+    t.end()
+  })
+
+  t.test('is invalid with additional inputs', function (t) {
+    var isValid = validate({
+      valid: true,
+      mimeType: 'application/octet-stream',
+      name: 'john',
+      content: new Buffer('basesixtyfour').toString('base64'),
+      additional: 'data'
+    })
+    t.false(isValid)
+    t.end()
+  })
+})
+
 test('Api User', function (t) {
   var user = require('./api-user')
   var validate = validator(user)

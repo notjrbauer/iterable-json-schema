@@ -291,7 +291,7 @@ test('Unsubscribe Request', function (t) {
 })
 
 test('Workflow Request', function (t) {
-  var workflowReq = require('./workflow-request')
+  var workflowReq = require('./trigger-workflow-request')
   var validate = validator(workflowReq)
 
   t.test('is valid with minimum inputs', function (t) {

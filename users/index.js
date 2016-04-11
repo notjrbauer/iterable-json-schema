@@ -21,4 +21,3 @@ exports.updateSubscription = validator(updateSubReq)
 exports.bulkUpdate = validator(bulkUpdateReq, {
   schemas: dependencies
 })
-

@@ -7,7 +7,6 @@ var targetReq = require('./target')
 
 var attachmentEntry = common.attachmentEntry
 
-
 var dependencies = {
   'attachment-entry': attachmentEntry
 }
@@ -15,4 +14,3 @@ var dependencies = {
 exports.target = validator(targetReq, {
   schemas: dependencies
 })
-

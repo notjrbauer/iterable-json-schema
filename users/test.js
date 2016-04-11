@@ -221,4 +221,3 @@ test('Disable Device Request', function (t) {
     t.end()
   })
 })
-

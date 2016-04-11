@@ -9,7 +9,7 @@ var dependencies = {
   'api-user': apiUser
 }
 
-exports.subscribe = validator(unsubscribeReq, {
+exports.subscribe = validator(subscribeReq, {
   schemas: dependencies
 })
 

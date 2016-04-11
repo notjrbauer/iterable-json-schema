@@ -1,7 +1,6 @@
 'use strict'
 
 var test = require('tape')
-var validator = require('is-my-json-valid')
 
 var events = require('./')
 

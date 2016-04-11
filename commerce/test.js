@@ -81,7 +81,6 @@ test('Track Purchase Request', function (t) {
       }],
       total: 100
     })
-    console.log(validate)
     t.ok(isValid)
     t.end()
   })

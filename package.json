@@ -1,7 +1,7 @@
 {
   "name": "iterable-json-schema",
   "main": "index.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "iterable api json schema",
   "license": "MIT",
   "repository": "notjrbauer/iterable-json-schema",

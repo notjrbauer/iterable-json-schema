@@ -17,6 +17,7 @@ exports.updateUser = validator(updateUser)
 exports.updateEmail = validator(updateEmailReq)
 exports.disableDevice = validator(disableDeviceReq)
 exports.updateSubscription = validator(updateSubReq)
+exports.remove = validator(apiUser)
 
 exports.bulkUpdate = validator(bulkUpdateReq, {
   schemas: dependencies

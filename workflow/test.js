@@ -22,7 +22,7 @@ test('Workflow Request', function (t) {
       dataFields: {
         data: 'fields'
       },
-      listId: 1
+      listId: {data: 'data'}
     })
     t.ok(isValid)
     t.end()
@@ -47,7 +47,7 @@ test('Workflow Request', function (t) {
       dataFields: {
         data: 'fields'
       },
-      listId: 1,
+      listId: {data: 'data'},
       additional: 'inputs'
     })
     t.false(isValid)

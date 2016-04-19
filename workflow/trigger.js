@@ -15,7 +15,7 @@ module.exports = {
       required: false
     },
     listId: {
-      type: 'number',
+      type: 'object',
       required: false
     }
   },

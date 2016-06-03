@@ -63,18 +63,6 @@ test('Commerce Item', function (t) {
     t.ok(isValid)
     t.end()
   })
-
-  t.test('is invalid with additional inputs', function (t) {
-    var isValid = validate({
-      id: '12',
-      name: 'item',
-      price: 1200,
-      quantity: 5,
-      additional: 'bad'
-    })
-    t.false(isValid)
-    t.end()
-  })
 })
 
 test('attachment-entry', function (t) {

@@ -118,28 +118,6 @@ test('Track Purchase Request', function (t) {
     t.end()
   })
 
-  t.test('is invalid with additional inputs', function (t) {
-    var isValid = validate({
-      user: {
-        email: 'test@test.com'
-      },
-      campaignId: 1,
-      templateId: 2,
-      createdAt: Date.parse(new Date()),
-      dataFields: {},
-      items: [{
-        id: '1',
-        name: 'item one',
-        price: 100,
-        quantity: 1
-      }],
-      total: 100,
-      additional: 'inputs'
-    })
-    t.false(isValid)
-    t.end()
-  })
-
   t.test('is invalid with 0 items', function (t) {
     var isValid = validate({
       user: {

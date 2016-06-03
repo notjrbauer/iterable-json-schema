@@ -42,5 +42,5 @@ module.exports = {
       required: false
     }
   },
-  additionalProperties: false
+  additionalProperties: true
 }

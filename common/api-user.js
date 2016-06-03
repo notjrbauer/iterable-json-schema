@@ -11,7 +11,7 @@ module.exports = {
       required: false
     },
     userId: {
-      type: 'string',
+      type: ['string', 'null'],
       required: false
     }
   },

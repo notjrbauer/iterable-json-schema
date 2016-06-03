@@ -7,23 +7,23 @@ module.exports = {
       required: false
     },
     userId: {
-      type: 'string',
+      type: ['string', 'null'],
       required: false
     },
     eventName: {
-      type: 'string',
+      type: ['string', 'null'],
       required: true
     },
     campaignId: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     },
     templateId: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     },
     createdAt: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     },
     dataFields: {

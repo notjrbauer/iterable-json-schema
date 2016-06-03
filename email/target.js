@@ -2,11 +2,11 @@ module.exports = {
   type: 'object',
   properties: {
     campaignId: {
-      type: 'number',
+      type: ['number'],
       required: true
     },
     recipientEmail: {
-      type: 'string',
+      type: ['string'],
       format: 'email',
       required: true
     },
@@ -15,7 +15,7 @@ module.exports = {
       required: false
     },
     sendAt: {
-      type: 'string',
+      type: ['string', 'null'],
       format: 'date-time'
     },
     attachments: {

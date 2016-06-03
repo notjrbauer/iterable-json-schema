@@ -2,37 +2,37 @@ module.exports = {
   type: 'object',
   properties: {
     email: {
-      type: 'string',
+      type: ['string'],
       format: 'email',
       required: true
     },
     emailListIds: {
       type: 'array',
       items: {
-        type: 'number'
+        type: ['number']
       },
       required: false
     },
     unsubscribedChannelIds: {
       type: 'array',
       items: {
-        type: 'number'
+        type: ['number']
       },
       required: false
     },
     unsubscribeMessageTypeIds: {
       type: 'array',
       items: {
-        type: 'number'
+        type: ['number']
       },
       required: false
     },
     campaignId: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     },
     templateId: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     }
   },

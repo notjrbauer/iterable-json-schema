@@ -2,12 +2,12 @@ module.exports = {
   type: 'object',
   properties: {
     email: {
-      type: 'string',
+      type: ['string', 'null'],
       format: 'email',
-      required: 'false'
+      required: false
     },
     workflowId: {
-      type: 'number',
+      type: ['number'],
       required: true
     },
     dataFields: {

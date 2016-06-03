@@ -2,11 +2,11 @@ module.exports = {
   type: 'object',
   properties: {
     listId: {
-      type: 'number',
+      type: ['number'],
       required: true
     },
     campaignId: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     },
     channelUnsubscribe: {

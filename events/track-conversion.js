@@ -7,19 +7,19 @@ module.exports = {
       required: true
     },
     campaignId: {
-      type: 'number',
+      type: ['number', 'null'],
       required: true
     },
     templateId: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     },
     amount: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     },
     createdAt: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     },
     dataFields: {

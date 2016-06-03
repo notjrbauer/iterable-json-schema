@@ -15,7 +15,7 @@ module.exports = {
       required: false
     },
     sendAt: {
-      type: 'string',
+      type: ['string', 'null'],
       format: 'date-time',
       required: false
     }

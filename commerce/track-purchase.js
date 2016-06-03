@@ -13,19 +13,19 @@ module.exports = {
       required: true
     },
     campaignId: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     },
     templateId: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     },
     total: {
-      type: 'number',
+      type: ['number', 'null'],
       required: true
     },
     createdAt: {
-      type: 'number',
+      type: ['number', 'null'],
       required: false
     },
     dataFields: {

@@ -6,7 +6,7 @@ module.exports = {
       required: true
     },
     email: {
-      type: 'string',
+      type: ['string', 'null'],
       format: 'email',
       required: false
     }

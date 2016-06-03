@@ -6,7 +6,7 @@ module.exports = {
       required: true
     },
     name: {
-      type: 'string',
+      type: ['string', 'null'],
       required: true
     }
   }
